@@ -12,8 +12,8 @@ SRCDIR = src/
 OBJS = $(addprefix $(OBJDIR),$(SRCS:.c=.o))
 DEPS = $(addprefix $(OBJDIR),$(SRCS:.c=.d))
 OBJDIR = obj/
-NAME = Minesweeper
-CFLAGS = -Wall -Wextra -Werror -MMD -O3 #-fsanitize=address
+NAME = minesweeper
+CFLAGS = -Wall -Wextra -Werror -MMD #-fsanitize=address
 LIB = inc/libft/libft.a
 INC = inc/
 COLUMNS = $(shell tput cols)
@@ -25,14 +25,14 @@ make_libs:
 
 -include $(DEPS)
 ${NAME}: ${OBJS} ${LIB}
-	cc ${CFLAGS} ${LIB} ${OBJS} -o ${NAME}
+	cc ${CFLAGS} ${OBJS} -I inc inc/libft/libft.a -o ${NAME}
 	echo "${WHITE}${NAME}: ${GREEN}Binary successfully created!${RESET}"
 
 leaks: ${NAME}
-	leaks -atExit -- ./${NAME} tests/${TEST}.rt
+	leaks -atExit -- ./${NAME}
 
 run: ${NAME}
-	./${NAME} tests/${TEST}.rt
+	./${NAME}
 
 ${OBJDIR}%.o: ${SRCDIR}%.c Makefile
 	@printf "${WHITE}${NAME}: ${CYAN}Compiling files: ${WHITE}$(notdir $<)...${RESET}\r"
