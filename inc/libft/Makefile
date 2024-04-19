@@ -26,7 +26,7 @@ SRCS = ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c \
 	   ft_atoi.c ft_calloc.c ft_strdup.c ft_substr.c ft_strjoin.c ft_strtrim.c \
 	   ft_split.c ft_itoa.c ft_strmapi.c ft_striteri.c ft_putchar_fd.c \
 	   ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c hex_len.c unsigned_len.c \
-	   int_len.c
+	   int_len.c gnl/gnl.c gnl/gnl_utils.c
 
 SRCS_BNS = ft_lstnew_bonus.c ft_lstadd_front_bonus.c ft_lstsize_bonus.c \
 			ft_lstlast_bonus.c ft_lstadd_back_bonus.c ft_lstdelone_bonus.c \
@@ -60,7 +60,8 @@ make_printf:
 combine_libs: ${NAME} ${LIBP}
 		rm ${NAME}
 		mkdir -p tmp
-		cp -r obj/*.o tmp/.
+		cp -rf obj/*.o tmp/.
+		cp -rf obj/gnl/*.o tmp/.
 		cp -r ft_printf/obj_bonus/*.o tmp/.
 		ar -crs ${NAME} tmp/*.o
 		rm -rf tmp
@@ -78,8 +79,7 @@ norm:
 	else print "${RESET}"$$0}'
 
 $(OBJDIR)%.o:	${SRCDIR}%.c $(HEADER) Makefile
-		@mkdir -p $(dir $@)
-		@mkdir -p ${OBJDIR}/bonus
+		@mkdir -p $(dir $@) ${OBJDIR}/bonus ${OBJDIR}/gnl
 		@printf "${WHITE}LIBFT:${CYAN}Compiling files: ${WHITE}$(notdir $<)...${RESET}\r"
 		@cc $(CFLAGS) -I . -c $< -o $@
 		@printf "\r%-${COLUMNS}s\r" ""
