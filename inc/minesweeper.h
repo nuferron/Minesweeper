@@ -13,6 +13,7 @@ typedef struct s_board
     int col;
     int row;
     int mines;
+    int tiles;
 }  t_board;
 
 typedef struct s_box
@@ -23,9 +24,12 @@ typedef struct s_box
 }   t_box;
 
 t_box   **create_map(t_board *b);
-void    ft_free_2p(t_box **ptr, int i);
+void    free_box(t_box **ptr, int i);
+void    free_mat(char **ptr);
 void    place_mines(t_box **game, t_board *b);
 void    print_map(t_box **game, t_board *b);
 void    play_game(t_box **game, t_board *b);
+void    print_zero(t_box **game, int rr, int rc, t_board *b);
+void    print_game(t_box **game, t_board *b);
 
 #endif
