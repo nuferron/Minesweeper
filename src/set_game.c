@@ -1,12 +1,5 @@
 #include "minesweeper.h"
 
-void    ft_free_2p(t_box **ptr, int i)
-{
-    for (int j = 0; j <= i; j++)
-        free(ptr[j]);
-    free(ptr);
-}
-
 t_box   **create_map(t_board *b)
 {
     t_box   **game = NULL;
@@ -18,7 +11,7 @@ t_box   **create_map(t_board *b)
     {
         game[i] = (t_box *)ft_calloc(b->col, sizeof(t_box));
         if (!game[i])
-            return (ft_free_2p(game, i), NULL);
+            return (free_box(game, i), NULL);
     }
     return (game);
 }
