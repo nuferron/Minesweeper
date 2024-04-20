@@ -25,5 +25,7 @@ typedef struct s_box
 t_box   **create_map(t_board *b);
 void    ft_free_2p(t_box **ptr, int i);
 void    place_mines(t_box **game, t_board *b);
+void    print_map(t_box **game, t_board *b);
+void    play_game(t_box **game, t_board *b);
 
 #endif
