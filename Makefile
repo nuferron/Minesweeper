@@ -7,13 +7,13 @@ CYAN = \033[1;36m
 WHITE = \033[1;37m
 RESET = \033[0m
 
-SRCS = 	main.c set_game.c print_game.c
+SRCS = 	main.c set_game.c print_game.c ft_free.c play_game.c
 SRCDIR = src/
 OBJS = $(addprefix $(OBJDIR),$(SRCS:.c=.o))
 DEPS = $(addprefix $(OBJDIR),$(SRCS:.c=.d))
 OBJDIR = obj/
 NAME = minesweeper
-CFLAGS = -Wall -Wextra -Werror -MMD #-fsanitize=address
+CFLAGS = -Wall -Wextra -Werror -MMD -fsanitize=address
 LIB = inc/libft/libft.a
 INC = inc/
 COLUMNS = $(shell tput cols)
