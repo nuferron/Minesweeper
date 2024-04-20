@@ -23,6 +23,7 @@ void    init_board(t_board *b, int row, int col, int mines)
     b->row = row;
     b->col = col;
     b->mines = mines;
+    b->tiles = row * col - mines;
 }
 
 void    pers_mode(t_board *b)
@@ -41,15 +42,16 @@ void    pers_mode(t_board *b)
             b->row = ft_atoi(values[0]);
             b->col = ft_atoi(values[1]);
             b->mines = ft_atoi(values[2]);
+            b->tiles = b->row * b->col - b->mines;
             if (b->row > 1 && b->row <= 30 &&
                 b->col > 1 && b->col <= 30 &&
                 b->mines > 0 && b->mines < b->row * b->col)
             {
-                free(values);
+                free_mat(values);
                 break ;
             }
         }
-        free(values);
+        free_mat(values);
         ft_printf(INVALID);
     }
 }
@@ -77,7 +79,6 @@ int main(void)
     game = create_map(&b);
     place_mines(game, &b);
     play_game(game, &b);
-    //print_map(game, &b);
-    ft_free_2p(game, b.row);
+    free_box(game, b.row);
     return (0);
 }
