@@ -56,8 +56,8 @@ void    place_mines(t_box **game, t_board *b)
         if (game[rr][rc].value != -1)
         {
             game[rr][rc].value = -1;
+            set_values(game, b, rr, rc);
             i++;
         }
-        set_values(game, b, rr, rc);
     }
 }
