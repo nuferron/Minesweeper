@@ -7,7 +7,7 @@ CYAN = \033[1;36m
 WHITE = \033[1;37m
 RESET = \033[0m
 
-SRCS = 	main.c
+SRCS = 	main.c set_game.c
 SRCDIR = src/
 OBJS = $(addprefix $(OBJDIR),$(SRCS:.c=.o))
 DEPS = $(addprefix $(OBJDIR),$(SRCS:.c=.d))
