@@ -14,7 +14,7 @@ t_box   **create_map(t_board *b)
     game = (t_box **)ft_calloc(b->row, sizeof(t_box *));
     if (!game)
         return (ft_dprintf(2, MEM), NULL);
-    for (int i = 0; i < b->col; i++)
+    for (int i = 0; i < b->row; i++)
     {
         game[i] = (t_box *)ft_calloc(b->col, sizeof(t_box));
         if (!game[i])
