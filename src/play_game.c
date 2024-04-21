@@ -2,7 +2,7 @@
 
 static int *check_coord(t_board *b, char **coord, int *id)
 {
-    if (!coord || !coord[1] || coord[2])
+    if (!coord || !coord[1] || (coord[2] && coord[2][0] != '\n'))
         return (NULL);
     for (int i = 0; i < 2; i++)
     {
