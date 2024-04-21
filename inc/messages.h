@@ -14,8 +14,9 @@
 #define REQMINE "The number of mines must be greater than 0 and less than the number of boxes.\n"
 #define FORMAT  "Please, enter your preferences in this format:\n\trow col mines\n"
 #define MEM     "Error: Memory problems\n"
-#define END     "Congratulations! You won!\n"
 #define PUTFLAG "To place a flag, introduce: f <row> <col>\n"
 #define UNCOVER "To uncover a tile, introduce: <row> <col>\n"
+#define LOST    "Oh, no! You've exploded! Better luck next time 💀\n"
+#define WIN     "Yayyy! You won! Awesome! 🥳\n"
 
 #endif
