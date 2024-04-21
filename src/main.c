@@ -4,15 +4,25 @@ int get_mode(void)
 {
     int     mode = -1;
     char    *read = NULL;
+    char    **input = NULL;
 
     while (1)
     {
         ft_printf(MENU EASY MEDIUM HARD PERS EXIT);
         read = get_next_line(0);
-        mode = ft_atoi(read);
+        if (!read)
+            exit(ft_printf(MEM));
+        input = ft_split(read, ' ');
         free(read);
-        if (mode > 0 && mode <= 5)
-            break ;
+        if (!input)
+            exit(ft_printf(MEM));
+        if (!input[1])
+        {
+            mode = ft_atoi(input[0]);
+            free_mat(input);
+            if (mode > 0 && mode <= 5)
+                break ;
+        }
         ft_printf(INVALID);
     }
     return(mode);
@@ -39,19 +49,13 @@ void    pers_mode(t_board *b)
         free(read);
         if (values && values[1] && values[2])
         {
-            b->row = ft_atoi(values[0]);
-            b->col = ft_atoi(values[1]);
-            b->mines = ft_atoi(values[2]);
-            b->tiles = b->row * b->col - b->mines;
+            init_board(b, ft_atoi(values[0]), ft_atoi(values[1]), ft_atoi(values[2]));
+            free_mat(values);
             if (b->row > 1 && b->row <= 30 &&
                 b->col > 1 && b->col <= 30 &&
                 b->mines > 0 && b->mines < b->row * b->col)
-            {
-                free_mat(values);
                 break ;
-            }
         }
-        free_mat(values);
         ft_printf(INVALID);
     }
 }
