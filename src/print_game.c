@@ -2,45 +2,47 @@
 
 static char *COLOR[] = {ZERO, ONE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, FLAG, BOMB, UNKNOWN};
 
-void    print_map(t_box **game, t_board *b)
+static void    print_col_id(int max)
 {
     write(1, "    [00]", 8);
-    for (int i = 1; i < b->col; i++)
+    for (int i = 1; i < max; i++)
     {
+        write(1, "[", 1);
         if (i < 10)
-            ft_printf("[0%d]", i);
-        else
-            ft_printf("[%d]", i);
+            write(1, "0", 1);
+        ft_printf("%d", i);
+        write(1, "]", 1);
     }
     write(1, "\n", 1);
+}
+
+void    print_map(t_box **game, t_board *b, int win)
+{
+    print_col_id(b->col);
     for (int i = 0; i < b->row; i++)
     {
+        write(1, "[", 1);
         if (i < 10)
-            ft_printf("[0%d]  ", i);
-        else
-            ft_printf("[%d]  ", i);
+            write(1, "0", 1);
+        ft_printf("%d", i);
+        write(1, "]  ", 3);
         for (int j = 0; j < b->col; j++)
         {
-            if (game[i][j].value == -1)
+            if (!win && game[i][j].value == -1)
                 write(1, COLOR[10], 15);
+            else if (win && game[i][j].value == -1)
+                write(1, COLOR[9], 15);
             else
                 write(1, COLOR[game[i][j].value], ft_strlen(COLOR[game[i][j].value]));
         }
         write(1, "\n", 1);
     }
+    print_col_id(b->col);
 }
 
 void    print_game(t_box **game, t_board *b)
 {
-    write(1, "    [00]", 8);
-    for (int i = 1; i < b->col; i++)
-    {
-        if (i < 10)
-            ft_printf("[0%d]", i);
-        else
-            ft_printf("[%d]", i);
-    }
-    write(1, "\n", 1);
+    print_col_id(b->col);
     for (int i = 0; i < b->row; i++)
     {
         if (i < 10)
@@ -56,8 +58,12 @@ void    print_game(t_box **game, t_board *b)
             else
                 write(1, COLOR[game[i][j].value], ft_strlen(COLOR[game[i][j].value]));
         }
-        write(1, "\n", 1);
+        if (i < 10)
+            ft_printf("[0%d]\n", i);
+        else
+            ft_printf("[%d]\n", i);
     }
+    print_col_id(b->col);
 }
 
 void    print_zero(t_box **game, int rr, int rc, t_board *b)

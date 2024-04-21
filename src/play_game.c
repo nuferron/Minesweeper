@@ -60,10 +60,13 @@ void    play_game(t_box **game, t_board *b)
         if (get_move(game, read, b) == -1)
         {
             ft_printf(YELLOW LOST RESET);
-            print_map(game, b);
+            print_map(game, b, 0);
             return ;
         }
         if (!b->tiles && ft_printf(YELLOW WIN RESET))
+        {
+            print_map(game, b, 1);
             return ;
+        }
     }
 }
