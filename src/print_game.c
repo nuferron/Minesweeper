@@ -63,7 +63,7 @@ void    print_game(t_box **game, t_board *b)
         if (i < 10)
             write(1, "0", 1);
         ft_printf("%d", i);
-        write(1, "]", 3);
+        write(1, "]\n", 2);
     }
     print_col_id(b->col);
 }
