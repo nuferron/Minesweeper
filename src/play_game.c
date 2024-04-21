@@ -2,12 +2,12 @@
 
 static int *check_coord(t_board *b, char **coord, int *id)
 {
-    if (!coord || !coord[1])
+    if (!coord || !coord[1] || coord[2])
         return (NULL);
     for (int i = 0; i < 2; i++)
     {
         id[i] = ft_atoi(coord[i]);
-        if (coord[i][0] != '0' && !id)
+        if (coord[i][0] != '0' && !id[i])
             return (NULL);
     }
     if (id[0] >= b->row || id[0] < 0 || id[1] >= b->col || id[1] < 0)
@@ -59,11 +59,11 @@ void    play_game(t_box **game, t_board *b)
             exit(ft_dprintf(2, MEM));
         if (get_move(game, read, b) == -1)
         {
-            ft_printf("You exploded!\n");
+            ft_printf(YELLOW LOST RESET);
             print_map(game, b);
-            exit(0);
+            return ;
         }
-        if (!b->tiles && ft_printf(END))
-            exit(0);
+        if (!b->tiles && ft_printf(YELLOW WIN RESET))
+            return ;
     }
 }
