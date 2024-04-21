@@ -8,7 +8,7 @@
 #define HARD    "\t(3) Expert: 16×30 99 mines\n"
 #define PERS    "\t(4) Personalized\n"
 #define EXIT    "\t(5) Exit\n"
-#define INVALID "Invalid input\n"
+#define INVALID "\nINVALID INPUT\n"
 #define BYE     "See you soon!\n"
 #define REQBOX  "Both rows and columns must have a minimum of 2 boxes and a maximum of 30.\n"
 #define REQMINE "The number of mines must be greater than 0 and less than the number of boxes.\n"

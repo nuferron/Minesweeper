@@ -27,7 +27,7 @@ t_box   **create_map(t_board *b);
 void    free_box(t_box **ptr, int i);
 void    free_mat(char **ptr);
 void    place_mines(t_box **game, t_board *b);
-void    print_map(t_box **game, t_board *b);
+void    print_map(t_box **game, t_board *b, int win);
 void    play_game(t_box **game, t_board *b);
 void    print_zero(t_box **game, int rr, int rc, t_board *b);
 void    print_game(t_box **game, t_board *b);
