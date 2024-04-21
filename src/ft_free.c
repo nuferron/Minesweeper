@@ -2,7 +2,7 @@
 
 void    free_box(t_box **ptr, int i)
 {
-    for (int j = 0; j <= i; j++)
+    for (int j = 0; j < i; j++)
         free(ptr[j]);
     free(ptr);
 }
