@@ -45,10 +45,11 @@ void    print_game(t_box **game, t_board *b)
     print_col_id(b->col);
     for (int i = 0; i < b->row; i++)
     {
+        write(1, "[", 1);
         if (i < 10)
-            ft_printf("[0%d]  ", i);
-        else
-            ft_printf("[%d]  ", i);
+            write(1, "0", 1);
+        ft_printf("%d", i);
+        write(1, "]  ", 3);
         for (int j = 0; j < b->col; j++)
         {
             if (game[i][j].flag == true)
@@ -58,10 +59,11 @@ void    print_game(t_box **game, t_board *b)
             else
                 write(1, COLOR[game[i][j].value], ft_strlen(COLOR[game[i][j].value]));
         }
+        write(1, "[", 1);
         if (i < 10)
-            ft_printf("[0%d]\n", i);
-        else
-            ft_printf("[%d]\n", i);
+            write(1, "0", 1);
+        ft_printf("%d", i);
+        write(1, "]", 3);
     }
     print_col_id(b->col);
 }
