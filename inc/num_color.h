@@ -13,18 +13,19 @@
 #define ORANGE "\x1B[1;38;2;255;116;0m"
 #define GREY "\x1B[1;38;2;116;116;116m"
 #define D_GREY "\x1B[1;38;2;50;50;50m"
+#define D_GREEN "\x1B[1;38;2;75;200;30m"
 
 #define ONE BLUE "1   " RESET
 #define TWO GREEN "2   " RESET
 #define THREE MAGENTA "3   " RESET
 #define FOUR PURPLE "4   " RESET
 #define FIVE CYAN "5   " RESET
-#define SIX WHITE "6   " RESET
+#define SIX D_GREEN "6   " RESET
 #define SEVEN ORANGE "7   " RESET
 #define EIGHT YELLOW "8   " RESET
 #define FLAG RED "*   " RESET
 #define ZERO D_GREY "0   " RESET
-#define UNKNOWN GREY "-   " RESET
+#define UNKNOWN WHITE "-   " RESET
 #define BOMB RED "O   " RESET
 
 #endif
