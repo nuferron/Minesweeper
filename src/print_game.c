@@ -35,7 +35,11 @@ void    print_map(t_box **game, t_board *b, int win)
             else
                 write(1, COLOR[game[i][j].value], ft_strlen(COLOR[game[i][j].value]));
         }
-        write(1, "\n", 1);
+        write(1, "[", 1);
+        if (i < 10)
+            write(1, "0", 1);
+        ft_printf("%d", i);
+        write(1, "]\n", 2);
     }
     print_col_id(b->col);
 }
@@ -55,7 +59,7 @@ void    print_game(t_box **game, t_board *b)
             if (game[i][j].flag == true)
                 write(1, COLOR[9], 15);
             else if (game[i][j].print == false)
-                write(1, COLOR[11], 29);
+                write(1, COLOR[11], 15);
             else
                 write(1, COLOR[game[i][j].value], ft_strlen(COLOR[game[i][j].value]));
         }
