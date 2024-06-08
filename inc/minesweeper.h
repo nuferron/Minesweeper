@@ -7,6 +7,7 @@
 #include "num_color.h"
 #include <stdbool.h>
 #include <time.h>
+#include <ncurses.h>
 
 typedef struct s_board
 {

@@ -1,11 +1,11 @@
 #ifndef MESSAGES_H
 # define MESSAGES_H
 
-#define WELCOME "Welcome to Minesweeper! 💣🚩\n"
+#define WELCOME "Welcome to Minesweeper!\n"
 #define MENU    "Please, enter your game mode:\n"
-#define EASY    "\t(1) Beginner: 8×8 10 mines\n"
-#define MEDIUM  "\t(2) Intermediate: 16×16 40 mines\n"
-#define HARD    "\t(3) Expert: 16×30 99 mines\n"
+#define EASY    "\t(1) Beginner: 8x8 10 mines\n"
+#define MEDIUM  "\t(2) Intermediate: 16x16 40 mines\n"
+#define HARD    "\t(3) Expert: 16x30 99 mines\n"
 #define PERS    "\t(4) Personalized\n"
 #define EXIT    "\t(5) Exit\n"
 #define INVALID "\nINVALID INPUT\n"

@@ -13,7 +13,7 @@ OBJS = $(addprefix $(OBJDIR),$(SRCS:.c=.o))
 DEPS = $(addprefix $(OBJDIR),$(SRCS:.c=.d))
 OBJDIR = obj/
 NAME = minesweeper
-CFLAGS = -Wall -Wextra -Werror -MMD -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror -MMD #-fsanitize=address
 LIB = inc/libft/libft.a
 INC = inc/
 COLUMNS = $(shell tput cols)
@@ -25,7 +25,7 @@ make_libs:
 
 -include $(DEPS)
 ${NAME}: ${OBJS} ${LIB}
-	cc ${CFLAGS} ${OBJS} -I inc inc/libft/libft.a -o ${NAME}
+	cc ${CFLAGS} ${OBJS} -lncurses -I inc inc/libft/libft.a -o ${NAME}
 	echo "${WHITE}${NAME}: ${GREEN}Binary successfully created!${RESET}"
 
 leaks: ${NAME}

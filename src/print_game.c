@@ -4,21 +4,47 @@ static char *COLOR[] = {ZERO, ONE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, FL
 
 static void    print_col_id(int max)
 {
-    write(1, "    [00]", 8);
+    printw("   [00]");
     for (int i = 1; i < max; i++)
     {
-        write(1, "[", 1);
+        printw("[");
         if (i < 10)
-            write(1, "0", 1);
-        ft_printf("%d", i);
-        write(1, "]", 1);
+            printw("0");
+        printw("%d]", i);
     }
-    write(1, "\n", 1);
+    printw("\n");
 }
 
 void    print_map(t_box **game, t_board *b, int win)
 {
     print_col_id(b->col);
+    for (int i = 0; i < b->row; i++)
+    {
+        printw("[");
+        if (i < 10)
+            printw("0");
+        printw("%d]  ", i);
+        for (int j = 0; j < b->col; j++)
+        {
+            if (!win && game[i][j].value == -1)
+                printw(COLOR[10]);
+            else if (win && game[i][j].value == -1)
+                printw(COLOR[9]);
+            else
+                printw(COLOR[game[i][j].value]);
+        }
+        printw("[");
+        if (i < 10)
+            printw("0");
+        printw("%d]\n", i);
+    }
+    print_col_id(b->col);
+    refresh();
+}
+
+/*void    print_map(t_box **game, t_board *b, int win)
+{
+    
     for (int i = 0; i < b->row; i++)
     {
         write(1, "[", 1);
@@ -42,7 +68,7 @@ void    print_map(t_box **game, t_board *b, int win)
         write(1, "]\n", 2);
     }
     print_col_id(b->col);
-}
+}*/
 
 void    print_game(t_box **game, t_board *b)
 {
